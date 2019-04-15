@@ -6,7 +6,6 @@ export const fetchData = async (params = '') => {
   if (params.length) {
     url = url + '&date=' + params;
   }
-  console.log(url)
   const response = await fetch(url);
   const json = await response.json();
 

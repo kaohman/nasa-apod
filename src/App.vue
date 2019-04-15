@@ -30,6 +30,15 @@ body {
   padding: 0;
 }
 
+button {
+  outline: none;
+  transition: all 0.5s ease;
+}
+
+button:active {
+  outline: none;
+}
+
 #app {
   font-family: 'Raleway', Helvetica, Arial, sans-serif;
   display: grid;

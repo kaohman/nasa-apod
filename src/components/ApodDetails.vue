@@ -1,13 +1,17 @@
 <template>
   <div class="apod-details">
+    <button v-on:click="getNewImage" id="prev"></button>
+    <button v-on:click="getNewImage" id="next"></button>
     <img v-if="image.media_type === 'image'" class="apod-img" v-bind:src="image.url" alt="nasa astronomy photo of the day"/>
-    <iframe v-else class="apod-img" v-bind:src="image.url" alt="nasa astronomy photo of the day"/>
-    <button v-on:click="hidden = false" v-if="hidden" class="show-details">show caption</button>
+    <div class="video-container" v-else>
+      <iframe class="apod-img video" v-bind:src="image.url" alt="nasa astronomy photo of the day"/>
+    </div>
+    <button v-on:click="hidden = false" v-if="hidden" class="show details">show caption</button>
     <div v-else class="details-text">
       <h4>{{ image.title }}</h4>
       <h5>{{ image.copyright }}</h5>
       <p>{{ image.explanation }}</p>
-      <button v-on:click="hidden = true" class="hide-details">hide caption</button>
+      <button v-on:click="hidden = true" class="hide details">hide caption</button>
     </div>
   </div>
 </template>
@@ -26,18 +30,32 @@ export default {
   data: function () {
     return {
       image: {},
-      hidden: false,
+      hidden: true,
+      day: 1,
+      currentDay: 1
     }
   },
 
   mounted: async function() {
     this.image = await this.getImage();
+    this.day = parseInt(this.image.date.substring(8, 10));
+    this.currentDay = parseInt(this.image.date.substring(8, 10));
   },
 
   methods: {
-    getImage: async function() {
-      const image = await fetchData();
-      return image;
+    getImage: async function(date) {
+      return await fetchData();
+    },
+    getNewImage: async function(e) {
+      if (e.target.id === 'prev' && this.day > 1) {
+        this.day = this.day - 1;
+      } else if (e.target.id === 'next' && this.day < this.currentDay) {
+        this.day = this.day + 1;
+      } else {
+        return
+      }
+      const newDate = this.image.date.substring(0, 8) + this.day;
+      this.image = await fetchData(newDate);
     }
   }
 }
@@ -67,6 +85,16 @@ p {
   border: none;
 }
 
+.video-container {
+  width: 100%;
+  background-color: black;
+}
+
+.video {
+  margin-top: 15vh;
+  height: 85vh;
+}
+
 .details-text {
   color: white;
   right: 50%;
@@ -78,9 +106,10 @@ p {
   text-align: justify;
   bottom: 0px;
   box-shadow: 2px 2px 8px black;
+  transition: all 0.5s slide;
 }
 
-button {
+.details {
   width: 100px;
   color: grey;
   font-size: 12px;
@@ -89,19 +118,14 @@ button {
   border: 2px solid grey;
   border-radius: 10px;
   box-shadow: 2px 2px 8px black;
-  outline: none;
 }
 
-button:active {
-  outline: none;
-}
-
-button:hover {
+.details:hover {
   color: white;
   border-color: white;
 }
 
-.show-details {
+.show {
   position: fixed;
   right: 50%;
   bottom: 0%;
@@ -109,10 +133,40 @@ button:hover {
   margin-right: -50px;
 }
 
-.hide-details {
+.hide {
   display: block;
   margin: 10px auto 0 auto;
 }
 
+#prev,
+#next {
+  position: fixed;
+  height: 50px;
+  width: 50px;
+  border: none;
+  top: 50%;
+  z-index: 10;
+}
+
+#prev {
+  background: url('../icons/back-arrow.svg');
+  background-size: cover;
+}
+
+#prev:hover {
+  background: url('../icons/back-arrow-hover.svg');
+  background-size: cover;
+}
+
+#next {
+  margin-left: 96%;
+  background: url('../icons/forward-arrow.svg');
+  background-size: cover;
+}
+
+#next:hover {
+  background: url('../icons/forward-arrow-hover.svg');
+  background-size: cover;
+}
 
 </style>

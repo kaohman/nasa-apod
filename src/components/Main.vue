@@ -1,20 +1,22 @@
 <template>
   <div class="main">
-    
+    <ApodDetails />
   </div>
 </template>
 
 <script>
+import ApodContainer from './ApodContainer';
+import ApodDetails from './ApodDetails';
+
 export default {
   name: 'Main',
-  props: {
-    msg: String
+  components: {
+    ApodContainer,
+    ApodDetails
   }
 }
 </script>
 
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
+
 </style>

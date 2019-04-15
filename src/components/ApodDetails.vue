@@ -1,9 +1,11 @@
 <template>
   <div class="apod-details">
+    <button v-on:click="getNewImage" id="prev"></button>
+    <button v-on:click="getNewImage" id="next"></button>
     <img v-if="image.media_type === 'image'" class="apod-img" v-bind:src="image.url" alt="nasa astronomy photo of the day"/>
-    <iframe v-else class="apod-img" v-bind:src="image.url" alt="nasa astronomy photo of the day"/>
-    <button v-on:click="getNewImage" id="prev">prev</button>
-    <button v-on:click="getNewImage" id="next">next</button>
+    <div class="video-container" v-else>
+      <iframe class="apod-img video" v-bind:src="image.url" alt="nasa astronomy photo of the day"/>
+    </div>
     <button v-on:click="hidden = false" v-if="hidden" class="show details">show caption</button>
     <div v-else class="details-text">
       <h4>{{ image.title }}</h4>
@@ -83,6 +85,16 @@ p {
   border: none;
 }
 
+.video-container {
+  width: 100%;
+  background-color: black;
+}
+
+.video {
+  margin-top: 15vh;
+  height: 85vh;
+}
+
 .details-text {
   color: white;
   right: 50%;
@@ -106,12 +118,6 @@ p {
   border: 2px solid grey;
   border-radius: 10px;
   box-shadow: 2px 2px 8px black;
-  outline: none;
-  transition: all 0.5s ease;
-}
-
-.details:active {
-  outline: none;
 }
 
 .details:hover {
@@ -132,5 +138,35 @@ p {
   margin: 10px auto 0 auto;
 }
 
+#prev,
+#next {
+  position: fixed;
+  height: 50px;
+  width: 50px;
+  border: none;
+  top: 50%;
+  z-index: 10;
+}
+
+#prev {
+  background: url('../icons/back-arrow.svg');
+  background-size: cover;
+}
+
+#prev:hover {
+  background: url('../icons/back-arrow-hover.svg');
+  background-size: cover;
+}
+
+#next {
+  margin-left: 96%;
+  background: url('../icons/forward-arrow.svg');
+  background-size: cover;
+}
+
+#next:hover {
+  background: url('../icons/forward-arrow-hover.svg');
+  background-size: cover;
+}
 
 </style>

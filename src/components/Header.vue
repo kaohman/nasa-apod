@@ -21,6 +21,7 @@ export default {
   padding: 10px 30px 10px 30px;
   background-color: rgba(0, 0, 0, 0.7);
   position: fixed;
+  height: 15vh;
   width: 100%;
   display: flex;
   justify-content: space-between;

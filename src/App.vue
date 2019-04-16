@@ -1,10 +1,17 @@
 <template>
   <div id="app">
     <Header
+      v-bind:date="date"
+      v-on:details-date="date = $event"
       v-bind:page="page"
       v-on:change-page="page = $event"
     ></Header>
-    <Main v-bind:page="page"></Main>
+    <Main 
+      v-bind:date="date"
+      v-on:details-date="date = $event"
+      v-bind:page="page"
+      v-on:change-page="page = $event"
+    ></Main>
   </div>
 </template>
 
@@ -17,6 +24,7 @@ export default {
   data: function() {
     return {
       page: 'today',
+      date: '',
     }
   },
   components: {

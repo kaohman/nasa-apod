@@ -3,6 +3,7 @@
     <div 
       v-for="card in cards" 
       :key="card.date" 
+      :id="card.date"
       :style="[(card.media_type === 'video') ? { backgroundImage: `url('https://apod.nasa.gov/apod/image/1903/rolando-ligustri-C2018Y1_190227_FB_1551288721_800.jpg')` } : {backgroundImage: `url('${card.url}')`} ]"
       class="card-photo"
       v-on:click="showDetails"
@@ -20,7 +21,7 @@ export default {
 
   data: function() {
     return {
-      currentDay: 15,
+      currentDay: new Date().getDate(),
       cards: []
     }
   },
@@ -36,8 +37,8 @@ export default {
         this.cards.push(await fetchData(date))
       }
     },
-    showDetails: function() {
-      
+    showDetails: function(e) {
+      this.$emit('details-date', e.target.id)
     }
   }
 }

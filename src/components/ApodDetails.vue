@@ -21,24 +21,35 @@ import { fetchData } from '../utils/api.js';
 
 export default {
   name: 'ApodDetails',
+
+  props: {
+    date: {
+      type: String,
+      required: true
+    }
+  },
+
   data: function() {
     return {
       image: {},
       hidden: true,
       day: 1,
-      currentDay: 1
+      currentDay: new Date().getDate()
     }
   },
 
   mounted: async function() {
-    this.image = await this.getImage();
-    this.day = parseInt(this.image.date.substring(8, 10));
-    this.currentDay = parseInt(this.image.date.substring(8, 10));
+    this.image = await this.getImage()
+    this.day = parseInt(this.image.date.substring(8, 10))
   },
 
   methods: {
-    getImage: async function(date) {
-      return await fetchData();
+    getImage: async function() {
+      if (this.date.length) {
+        return await fetchData(this.date)
+      } else {
+        return await fetchData()
+      }
     },
     getNewImage: async function(e) {
       if (e.target.id === 'prev') {

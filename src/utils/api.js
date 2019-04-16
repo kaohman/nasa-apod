@@ -1,11 +1,10 @@
-import { apiKey } from './api-key';
-
 export const fetchData = async (params = '') => {
-  let url = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}`;
+  let url = `https://api.nasa.gov/planetary/apod?api_key=${process.env.API_KEY}`;
 
   if (params.length) {
     url = url + '&date=' + params;
   }
+  
   const response = await fetch(url);
   const json = await response.json();
 

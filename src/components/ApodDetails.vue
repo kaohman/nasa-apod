@@ -17,16 +17,10 @@
 </template>
 
 <script>
-import Apod from './Apod';
 import { fetchData } from '../utils/api.js';
 
 export default {
   name: 'ApodDetails',
-
-  components: {
-    Apod
-  },
-
   data: function() {
     return {
       image: {},

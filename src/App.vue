@@ -1,7 +1,10 @@
 <template>
   <div id="app">
-    <Header />
-    <Main />
+    <Header
+      v-bind:page="page"
+      v-on:change-page="page = $event"
+    ></Header>
+    <Main v-bind:page="page"></Main>
   </div>
 </template>
 
@@ -11,6 +14,11 @@ import Main from './components/Main.vue'
 
 export default {
   name: 'app',
+  data: function() {
+    return {
+      page: 'today',
+    }
+  },
   components: {
     Header,
     Main

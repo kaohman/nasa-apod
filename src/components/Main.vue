@@ -1,7 +1,15 @@
 <template>
   <div class="main">
-    <ApodContainer v-if="page === 'month'"></ApodContainer>
-    <ApodDetails v-else></ApodDetails>
+    <ApodContainer 
+      v-if="page === 'month'"
+      v-on:details-date="changeDetailsShown"
+    ></ApodContainer>
+    <ApodDetails 
+      :key="date"
+      v-else
+      v-bind:date="date"
+      v-on:details-date="changeDetailsShown"
+    ></ApodDetails>
   </div>
 </template>
 
@@ -11,15 +19,28 @@ import ApodDetails from './ApodDetails';
 
 export default {
   name: 'Main',
+
   props: {
     page: {
       type: String,
       required: true,
+    },
+    date: {
+      type: String,
+      required: true,
     }
   },
+
   components: {
     ApodContainer,
     ApodDetails
+  },
+
+  methods: {
+    changeDetailsShown: function(newDate) {
+      this.$emit('details-date', newDate);
+      this.$emit('change-page', 'details');
+    }
   }
 }
 </script>

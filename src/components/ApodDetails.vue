@@ -199,7 +199,6 @@ p {
 }
 
 @media screen and (max-width: 650px) { 
-
   #next {
     margin-left: 90%;
   }

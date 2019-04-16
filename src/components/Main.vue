@@ -1,7 +1,7 @@
 <template>
   <div class="main">
-    <ApodDetails v-if="details" />
-    <ApodContainer v-else />
+    <ApodContainer v-if="page === 'month'"></ApodContainer>
+    <ApodDetails v-else></ApodDetails>
   </div>
 </template>
 
@@ -11,9 +11,10 @@ import ApodDetails from './ApodDetails';
 
 export default {
   name: 'Main',
-  data: function() {
-    return {
-      details: false
+  props: {
+    page: {
+      type: String,
+      required: true,
     }
   },
   components: {

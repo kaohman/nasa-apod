@@ -24,16 +24,17 @@
 
 export default {
   name: 'Header',
-
-  data: function() {
-    return {
-      page: 'today'
+  props: {
+    page: {
+      type: String,
+      required: true,
     }
   },
-
   methods: {
     changePage: function(e) {
-      this.page = e.target.id
+      // this.page = e.target.id
+      console.log(e.target.id)
+      this.$emit('change-page', e.target.id)
     }
   }
 }
@@ -72,4 +73,44 @@ button:hover {
   display: flex;
   justify-content: space-between;
 }
+
+@media screen and (max-width: 800px) { 
+  h1 {
+    margin-top: 26px;
+    font-size: 24px;
+  }
+
+  button {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 650px) { 
+  .header {
+    height: 18vh;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  h1 {
+    margin-top: 5px;
+  }
+
+  button {
+    margin-top: 0;
+  }
+}
+
+@media screen and (max-width: 450px) { 
+  .header {
+    height: 19vh;
+  }
+
+  span {
+    font-size: 18px;
+    display: block;
+  }
+}
+
 </style>

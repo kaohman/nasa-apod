@@ -17,16 +17,10 @@
 </template>
 
 <script>
-import Apod from './Apod';
 import { fetchData } from '../utils/api.js';
 
 export default {
   name: 'ApodDetails',
-
-  components: {
-    Apod
-  },
-
   data: function() {
     return {
       image: {},
@@ -66,15 +60,20 @@ export default {
 h4 {
   margin: 0 0 10px 0;
   font-size: 22px;
+  text-align: left;
 }
 
 h5 {
   margin-top: 0;
   font-size: 14px;
+  text-align: left;
 }
 
 p {
-  margin-bottom: 0; 
+  max-height: 100px;
+  overflow: scroll;
+  color: lightgrey;
+  margin-bottom: 15px; 
   font-size: 14px;
 }
 
@@ -167,6 +166,37 @@ p {
 #next:hover {
   background: url('../icons/forward-arrow-hover.svg');
   background-size: cover;
+}
+
+@media screen and (max-width: 1000px) { 
+  .details-text {
+    width: 80%;
+    margin-right: -40%;
+  }
+
+  #next {
+    margin-left: 94%;
+  }
+}
+
+@media screen and (max-width: 800px) { 
+  .details-text {
+    width: 100%;
+    margin-right: -50%;
+  }
+}
+
+@media screen and (max-width: 650px) { 
+
+  #next {
+    margin-left: 90%;
+  }
+}
+
+@media screen and (max-width: 400px) { 
+  #next {
+    margin-left: 85%;
+  }
 }
 
 </style>

@@ -13,7 +13,7 @@ export default {
   name: 'Main',
   data: function() {
     return {
-      details: false
+      details: true
     }
   },
   components: {

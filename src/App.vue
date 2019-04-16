@@ -33,6 +33,7 @@ body {
 button {
   outline: none;
   transition: all 0.5s ease;
+  cursor: pointer;
 }
 
 button:active {
@@ -43,5 +44,7 @@ button:active {
   font-family: 'Raleway', Helvetica, Arial, sans-serif;
   display: grid;
   grid-template-columns: 1fr;
+  background-color: black;
+  height: 100vh;
 }
 </style>

@@ -1,6 +1,7 @@
 <template>
   <div class="main">
-    <ApodDetails />
+    <ApodDetails v-if="details" />
+    <ApodContainer v-else />
   </div>
 </template>
 
@@ -10,6 +11,11 @@ import ApodDetails from './ApodDetails';
 
 export default {
   name: 'Main',
+  data: function() {
+    return {
+      details: false
+    }
+  },
   components: {
     ApodContainer,
     ApodDetails

@@ -73,4 +73,10 @@ h4 {
   cursor: pointer;
 }
 
+@media screen and (max-width: 650px) { 
+  .apod-container {
+    padding-top: 19vh;
+  }
+}
+
 </style>

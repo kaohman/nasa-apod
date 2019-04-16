@@ -59,8 +59,9 @@ export default {
       } else {
         return
       }
-      const newDate = this.image.date.substring(0, 8) + this.day;
-      this.image = await fetchData(newDate);
+      const newDate = this.image.date.substring(0, 8) + this.day
+      this.image = await fetchData(newDate)
+      this.$emit('details-date', newDate);
     }
   }
 }
@@ -198,7 +199,6 @@ p {
 }
 
 @media screen and (max-width: 650px) { 
-
   #next {
     margin-left: 90%;
   }

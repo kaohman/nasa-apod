@@ -39,7 +39,12 @@ export default {
   methods: {
     changeDetailsShown: function(newDate) {
       this.$emit('details-date', newDate);
-      this.$emit('change-page', 'details');
+
+      if (parseInt(newDate.substring(8, 10)) === new Date().getDate()) {
+        this.$emit('change-page', 'today');
+      } else {
+        this.$emit('change-page', 'details');
+      }
     }
   }
 }

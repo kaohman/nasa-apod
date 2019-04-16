@@ -44,5 +44,7 @@ button:active {
   font-family: 'Raleway', Helvetica, Arial, sans-serif;
   display: grid;
   grid-template-columns: 1fr;
+  background-color: black;
+  height: 100vh;
 }
 </style>

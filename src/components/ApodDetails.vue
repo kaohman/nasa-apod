@@ -1,7 +1,7 @@
 <template>
   <div class="apod-details">
-    <button v-on:click="getNewImage" id="prev"></button>
-    <button v-on:click="getNewImage" id="next"></button>
+    <button v-if="this.day > 1" v-on:click="getNewImage" id="prev"></button>
+    <button v-if="this.day < this.currentDay" v-on:click="getNewImage" id="next"></button>
     <img v-if="image.media_type === 'image'" class="apod-img" v-bind:src="image.url" alt="nasa astronomy photo of the day"/>
     <div class="video-container" v-else>
       <iframe class="apod-img video" v-bind:src="image.url" alt="nasa astronomy photo of the day"/>
@@ -47,9 +47,9 @@ export default {
       return await fetchData();
     },
     getNewImage: async function(e) {
-      if (e.target.id === 'prev' && this.day > 1) {
+      if (e.target.id === 'prev') {
         this.day = this.day - 1;
-      } else if (e.target.id === 'next' && this.day < this.currentDay) {
+      } else if (e.target.id === 'next') {
         this.day = this.day + 1;
       } else {
         return

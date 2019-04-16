@@ -33,6 +33,7 @@ body {
 button {
   outline: none;
   transition: all 0.5s ease;
+  cursor: pointer;
 }
 
 button:active {

@@ -1,6 +1,6 @@
 <template>
   <header class="header">
-    <h1>NASA astronomy photo of the day</h1>
+    <h1>NASA <span>astronomy photo of the day</span></h1>
     <div>
       <h3>today</h3>
       <h3>all month</h3>
@@ -16,6 +16,17 @@ export default {
 </script>
 
 <style scoped>
+
+h3 {
+  color: lightgrey;
+  display: inline;
+}
+
+span {
+  padding-left: 5px;
+  color: grey;
+}
+
 .header {
   color: white;
   padding: 10px 30px 10px 30px;
@@ -26,9 +37,4 @@ export default {
   display: flex;
   justify-content: space-between;
 }
-
-h3 {
-  display: inline;
-}
-
 </style>

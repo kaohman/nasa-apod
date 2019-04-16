@@ -2,8 +2,20 @@
   <header class="header">
     <h1>NASA <span>astronomy photo of the day</span></h1>
     <div>
-      <h3>today</h3>
-      <h3>all month</h3>
+      <button 
+        v-on:click="changePage" 
+        v-bind:class="{'active':(page === 'today')}" 
+        id="today"
+      >
+        today
+      </button>
+      <button 
+        v-on:click="changePage" 
+        v-bind:class="{'active':(page === 'month')}" 
+        id="month"
+      >
+        this month
+      </button>
     </div>
   </header>
 </template>
@@ -11,20 +23,43 @@
 <script>
 
 export default {
-  name: 'Header'
+  name: 'Header',
+
+  data: function() {
+    return {
+      page: 'today'
+    }
+  },
+
+  methods: {
+    changePage: function(e) {
+      this.page = e.target.id
+    }
+  }
 }
 </script>
 
 <style scoped>
 
-h3 {
-  color: lightgrey;
-  display: inline;
-}
-
 span {
   padding-left: 5px;
   color: grey;
+}
+
+button {
+  margin: 32px 10px 0 10px;
+  font-size: 20px;
+  color: grey;
+  border: none;
+  background: none;
+}
+
+button:hover {
+  color: white;
+}
+
+.active {
+  color: white;
 }
 
 .header {

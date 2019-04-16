@@ -21,3 +21,4 @@ yarn-error.log*
 *.sw?
 
 api-key.js
+.env.development

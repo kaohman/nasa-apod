@@ -28,13 +28,16 @@ export default {
     page: {
       type: String,
       required: true,
+    },
+    date: {
+      type: String,
+      required: true,
     }
   },
   methods: {
     changePage: function(e) {
-      // this.page = e.target.id
-      console.log(e.target.id)
       this.$emit('change-page', e.target.id)
+      this.$emit('details-date', '')
     }
   }
 }

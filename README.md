@@ -30,7 +30,7 @@ This was my first time creating a Vue app. Users can view today's astronomy phot
 #### Enhancements
 - Include functionality to view older photos
 - Incorporate Vue Router to dynamically change the URL path and allow users to share a specific photo
-- Add redux and hook it up to Vue app
+- Add Vuex for state management
 
 ### Contributors
 [Karin Ohman](https://github.com/kaohman)

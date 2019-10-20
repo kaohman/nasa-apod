@@ -1,5 +1,5 @@
 # NASA Astronomy Photo of the Day
-#### This app displays beautiful astronomy photos for the current day and month from the [NASA APOD API](https://api.nasa.gov/api.html#apod). [SEE IT LIVE](https://nasa-apod-karin.herokuapp.com/)
+#### This app displays beautiful astronomy photos for the current day and month from the [NASA APOD API](https://api.nasa.gov/api.html#apod). [SEE IT LIVE](https://nasa-apod-ohman.herokuapp.com/)
 
 ### Set-Up
 - Get a NASA API key here: https://api.nasa.gov/index.html#apply-for-an-api-key

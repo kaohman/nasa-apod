@@ -9,7 +9,7 @@
 - Run ```npm run serve``` and visit localhost:8080 in your browser
 
 ### Deployed Website
-https://nasa-apod-karin.herokuapp.com/
+https://nasa-apod-ohman.herokuapp.com/
 
 #### Background/About
 This was my first time creating a Vue app. Users can view today's astronomy photo from NASA along with details about the photo and past photos for the month. The app uses responsive design to be both mobile and desktop friendly. The goal of the project was a practice take home code challenge using a new framework (Vue). View original assigment [here](https://gist.github.com/letakeane/28d852307097695c5d50b15857cb28eb).

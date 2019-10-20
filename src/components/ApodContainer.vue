@@ -21,7 +21,9 @@ export default {
 
   data: function() {
     return {
-      currentDay: new Date().getDate(),
+      currentYear: new Date().getFullYear().toString().padStart(4, '0'),
+      currentMonth: (new Date().getMonth() + 1).toString().padStart(2, '0'),
+      currentDay: new Date().getDate().toString().padStart(2, '0'),
       cards: []
     }
   },
@@ -33,7 +35,7 @@ export default {
   methods: {
     getCards: async function() {
       for (let i = 1; i <= this.currentDay; i++) {
-        const date = `2019-04-${i}`;
+        const date = `${this.currentYear}-${this.currentMonth}-${i}`;
         this.cards.push(await fetchData(date))
       }
     },
